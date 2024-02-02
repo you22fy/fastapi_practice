@@ -10,13 +10,13 @@ import api.schemas.user as user_schema
 router = APIRouter()
 
 
-@router.post("/user/signup", response_model=user_schema.UserCreateResponse)
-async def signup_user():
+@router.post("/user/sign_up", response_model=user_schema.UserCreateResponse)
+async def sign_up_user():
     return user_schema.UserCreateResponse(email="hoge", password="fuga", name="yuki", id=1)
 
 
-@router.post("/user/signin", response_model=user_schema.UserCreateResponse)
-async def signin_user():
+@router.post("/user/sign_in", response_model=user_schema.UserCreateResponse)
+async def sign_in_user():
     return user_schema.UserCreateResponse(email="hoge", password="fuga", name="yuki", id=1)
 
 
