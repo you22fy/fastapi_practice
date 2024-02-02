@@ -46,3 +46,17 @@ docker-compose run --entrypoint "poetry install --no-root" app
 docker-compose build --no-cache
 ```
 
+
+## fastapiのディレクトリ構成
+```
+api
+├── cruds # Create, Read, Update, Delete
+│   ├── __init__.py
+├── models # データベースのモデル
+│   ├── __init__.py
+├── routers # ルーティング
+│   ├── __init__.py
+├── schemas # リクエストとレスポンスのスキーマ
+│   ├── __init__.py
+├── main.py
+```
