@@ -9,6 +9,3 @@ class Tweet(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     body = Column(String(140))
-
-
-
