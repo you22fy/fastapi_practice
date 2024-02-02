@@ -30,5 +30,8 @@ async def update_tweet(tweet_id: int, tweet_body: tweet_schema.TweetCreate, db: 
 
 
 @router.delete("/tweets/{tweet_id}")
-async def delete_tweet(tweet_id: int):
-    pass
+async def delete_tweet(tweet_id: int, db: AsyncSession = Depends(get_db)):
+    tweet = await tweet_crud.get_tweet(db, tweet_id)
+    if tweet is None:
+        raise HTTPException(status_code=404, detail="Tweet not found")
+    return await tweet_crud.delete_tweet(db, tweet)
