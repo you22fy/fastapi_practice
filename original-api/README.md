@@ -83,3 +83,13 @@ api
 │   ├── __init__.py
 ├── main.py
 ```
+
+## migrateの実行
+```
+docker-compose exec demo-app poetry run python -m api.migrate_db
+```
+
+## mysqlへの接続
+```
+docker-compose exec db mysql demo
+```

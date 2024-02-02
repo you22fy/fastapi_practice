@@ -1,6 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from typing import List
+from sqlalchemy.ext.asyncio import AsyncSession
 
+import api.cruds.tweet as tweet_crud
+from api.db import get_db
 import api.schemas.tweet as tweet_schema
 
 
@@ -13,8 +16,8 @@ async def list_tweets():
 
 
 @router.post("/tweets", response_model=tweet_schema.TweetCreateResponse)
-async def create_tweet(tweet_body: tweet_schema.TweetCreate):
-    return tweet_schema.TweetCreateResponse(id=1, body=tweet_body.body)
+async def create_tweet(tweet_body: tweet_schema.TweetCreate, db: AsyncSession = Depends(get_db)):
+    return await tweet_crud.create_tweet(db, tweet_body)
 
 
 @router.put("/tweets/{tweet_id}")
